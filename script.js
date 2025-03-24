@@ -1,12 +1,11 @@
 const pass = document.getElementById('password');
-console.log(pass.textContent);
-let newPass = getPass();
-console.log("Tu nueva contra es " + newPass);
-pass.textContent = newPass;
+const getPass = document.getElementById("createPass");
+const copy = document.getElementById("copy");
 
-function getPass(){
+let newPass;
+getPass.addEventListener("click", function() {
     let mypass = "";
-    let length = getRandomInt(9,20);
+    let length = getRandomInt(10,20);
     let i = 0;
     while (i < length){
         randomNum = getRandomInt(33,126);
@@ -14,7 +13,13 @@ function getPass(){
         mypass = mypass.concat(char);
         i++;
     }
-    return mypass;
+    asignPass(mypass);
+    }
+);
+
+function asignPass(mypass){
+    console.log("Tu nueva contrasenia es " + newPass);
+    pass.value = mypass;
 }
 
 function getRandomInt(min,max) {
@@ -24,3 +29,8 @@ function getRandomInt(min,max) {
     }
     return randomInt;
   }
+
+copy.addEventListener("click", function(){
+    navigator.clipboard.writeText(pass.value);
+    alert("Copied the text: " + pass.value);
+});
