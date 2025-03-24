@@ -5,7 +5,7 @@ const copy = document.getElementById("copy");
 let newPass;
 getPass.addEventListener("click", function() {
     let mypass = "";
-    let length = getRandomInt(10,20);
+    let length = getRandomInt(14,20);
     let i = 0;
     while (i < length){
         randomNum = getRandomInt(33,126);
